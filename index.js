@@ -11,7 +11,9 @@ function randomizeGridItems() {
   });
 }
 
-window.addEventListener('load', randomizeGridItems);
+window.addEventListener('load', function() {
+  randomizeGridItems();
+});
 
 function reorderGridItems(order) {
   const container = document.querySelector('.container');
@@ -32,6 +34,8 @@ function reorderGridItems(order) {
   });
 }
 
+
+
 function chooseCol(col) {
   switch (col) {
     case 'A':
@@ -47,3 +51,8 @@ function chooseCol(col) {
       break;
   }
 }
+document.querySelector('.btn-container').addEventListener('click', function(event) {
+  if (event.target.tagName === 'BUTTON') {
+    chooseCol(event.target.className);
+  }
+});

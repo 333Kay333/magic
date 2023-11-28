@@ -10,11 +10,15 @@ header {
     padding: 33px;
     text-align: center;
     font-size: 35px;
+    
 }
 .btn-container {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    border: black 2px solid;
+    width: 100%;
+    padding: 10px;
    
 }
 

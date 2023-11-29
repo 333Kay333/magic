@@ -22,7 +22,7 @@ header {
    
 }
 
-.A, .B, .C {
+#A, #B, #C {
     background-color: #6e0e5b37;
     color: black;
     padding: 45px;

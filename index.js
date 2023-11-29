@@ -15,44 +15,43 @@ window.addEventListener('load', function() {
   randomizeGridItems();
 });
 
-function reorderGridItems(order) {
-  const container = document.querySelector('.container');
-  const items = Array.from(container.getElementsByClassName('grid-item'));
 
-  items.sort((a, b) => {
-    const aId = parseInt(a.id.split('-')[1]);
-    const bId = parseInt(b.id.split('-')[1]);
-    return order.indexOf(aId) - order.indexOf(bId);
-  });
+const btnA = document.getElementById('A');
+const btnB = document.getElementById('B');
+const btnC = document.getElementById('C');
 
-  while (container.firstChild) {
-    container.firstChild.remove();
-  }
+btnA.addEventListener('click', function() {
+  chooseBtn('A');
+});
 
-  items.forEach(item => {
-    container.appendChild(item);
+btnB.addEventListener('click', function() {
+  chooseBtn('B');
+});
+
+btnC.addEventListener('click', function() {
+  chooseBtn('C');
+});
+function reorderGridItems(newOrder) {
+  var gridItems = document.getElementsByClassName('grid-item');
+  var gridItemsArray = Array.from(gridItems);
+  var container = document.querySelector('.container');
+  container.innerHTML = '';
+  newOrder.forEach(function(index) {
+    container.appendChild(gridItemsArray[index - 1]);
   });
 }
 
 
-
-function chooseCol(col) {
-  switch (col) {
-    case 'A':
-      reorderGridItems([20, 17, 14, 11, 8, 5, 2, 19, 16, 13, 10, 7, 4, 1, 18, 15, 12, 9, 6, 3, 0]);
-      break;
-    case 'B':
-      reorderGridItems([18, 15, 12, 9, 6, 3, 0, 20, 17, 14, 11, 8, 5, 2, 19, 16, 13, 10, 7, 4, 1]);
-      break;
-    case 'C':
-      reorderGridItems([19, 16, 13, 10, 7, 4, 1, 18, 15, 12, 9, 6, 3, 0, 20, 17, 14, 11, 8, 5, 2]);
-      break;
-    default:
-      break;
+function chooseBtn(btn) {
+  if (btn === 'A') {
+    reorderGridItems([2, 5, 8, 11, 14, 17, 20, 1, 4, 7, 10, 13, 16, 19, 3, 6, 9, 12, 15, 18, 21]);
+  } else if (btn === 'B') {
+    reorderGridItems([3, 6, 9, 12, 15, 18, 21, 2, 5, 8, 11, 14, 17, 20, 1, 4, 7, 10, 13, 16, 19]);
+  } else {
+    reorderGridItems([1, 4, 7, 10, 13, 16, 19, 3, 6, 9, 12, 15, 18, 21, 2, 5, 8, 11, 14, 17, 20]);
   }
 }
-document.querySelector('.btn-container').addEventListener('click', function(event) {
-  if (event.target.tagName === 'BUTTON') {
-    chooseCol(event.target.className);
-  }
+
+window.addEventListener('load', function() {
+  chooseBtn();
 });

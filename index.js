@@ -20,7 +20,7 @@ const btnA = document.getElementById('A');
 const btnB = document.getElementById('B');
 const btnC = document.getElementById('C');
 const header = document.getElementById('header');
-const winner = document.getElementById('11').innerHTML; // Get the inner HTML of the grid item with id "11"
+const gridItem11 = document.getElementById('11'); // Get the grid item with id "11"
 let clickCount = 0; // Initialize click counter
 
 btnA.addEventListener('click', function() {
@@ -53,24 +53,24 @@ function chooseBtn(btn) {
   } else {
     reorderGridItems([1, 4, 7, 10, 13, 16, 19, 3, 6, 9, 12, 15, 18, 21, 2, 5, 8, 11, 14, 17, 20]);
   }
-}
 
-const buttons = document.querySelectorAll('.button');
-let clickTotal = 0;
+  clickCount++; // Increment the click counter
 
-function handleClick() {
-  clickTotal++; // Increment the click counter
-
-  if (clickTotal === 3) {
+  if (clickCount === 3) {
     btnA.removeEventListener('click', handleClick);
     btnB.removeEventListener('click', handleClick);
     btnC.removeEventListener('click', handleClick);
-    header.innerHTML = winner;
-  } else if (clickTotal >= 3) {
-    buttons.forEach(button => {
-      button.removeEventListener('click', handleClick);
-    });
+    const gridItem11HTML = gridItem11.innerHTML; // Store the inner HTML of the grid item 11 in a variable
+    header.innerHTML = gridItem11HTML; // Display the stored HTML in the header
   }
+}
+
+const buttons = document.querySelectorAll('.button');
+
+function handleClick() {
+  buttons.forEach(button => {
+    button.removeEventListener('click', handleClick);
+  });
 }
 
 btnA.addEventListener('click', handleClick);

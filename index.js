@@ -57,12 +57,11 @@ function chooseBtn(btn) {
   clickCount++; // Increment the click counter
 
   if (clickCount === 3) {
-    btnA.removeEventListener('click', handleClick);
-    btnB.removeEventListener('click', handleClick);
-    btnC.removeEventListener('click', handleClick);
-    const gridItem11HTML = gridItem11.innerHTML; // Store the inner HTML of the grid item 11 in a variable
-    header.innerHTML = gridItem11HTML; // Display the stored HTML in the header
+    var gridSpot = document.querySelector(".win");
+    gridSpot.style.backgroundColor = "#00ff00";
+    gridSpot.innerHTML = "your choice is in the center of the grid";
   }
+  
 }
 
 const buttons = document.querySelectorAll('.button');

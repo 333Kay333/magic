@@ -58,8 +58,8 @@ function chooseBtn(btn) {
 
   if (clickCount === 3) {
     var gridSpot = document.querySelector(".win");
-    gridSpot.style.backgroundColor = "#00ff00";
-    gridSpot.innerHTML = "your choice is in the center of the grid";
+    gridSpot.style.backgroundColor = "hsl(269, 28%, 59%)";
+    gridSpot.innerHTML = "the card you have in mind is in the center of the grid";
   }
   
 }
